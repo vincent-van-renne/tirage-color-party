@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Tirage Couleurs – Nouvel an Color Party</title>
+<style>
+body { font-family: Arial; padding: 20px; background: #f8f8f8; }
+button {
+    margin: 10px 0; padding: 12px 18px; border: none; 
+    background: #007AFF; color: white; border-radius: 8px; cursor: pointer;
+}
+button:disabled { background: gray; }
+.card {
+    background: white; padding: 15px; border-radius: 10px;
+    margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+</style>
+</head>
+<body>
+
+<h2>🎉 Tirage Couleurs – Nouvel an Color Party</h2>
+
+<p>Clique sur ton nom pour tirer ta couleur :</p>
+
+<div id="participants"></div>
+
+<script>
+// ⚙️ Données
+let colors = ["blanc", "bleu", "jaune", "rouge", "vert", "rose", "marron", "gris"];
+let participants = ["Vincent", "Claude", "John", "Christelle"];
+
+// 📌 Génération des boutons
+const container = document.getElementById("participants");
+participants.forEach(name => {
+    const div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `
+        <strong>${name}</strong><br>
+        <button onclick="drawColor('${name}', this)">🔮 Tirer ma couleur</button>
+    `;
+    container.appendChild(div);
+});
+
+// 📌 Tirage + envoi automatique WhatsApp
+async function drawColor(name, btn) {
+    if (colors.length === 0) {
+        alert("Toutes les couleurs ont déjà été tirées !");
+        return;
+    }
+
+    // Tirage aléatoire
+    const picked = colors.splice(Math.floor(Math.random() * colors.length), 1)[0];
+
+    btn.disabled = true;
+    btn.innerText = `🎨 Couleur obtenue : ${picked.toUpperCase()}`;
+
+    // ✉️ Envoi dans WhatsApp via l’API Cloud
+    await fetch("YOUR_SERVER_WEBHOOK_URL", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            participant: name,
+            color: picked
+        })
+    });
+}
+</script>
+
+</body>
+</html>
