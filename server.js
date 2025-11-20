@@ -6,7 +6,7 @@ app.use(express.json());
 
 // ⚠️ Remplacez ces valeurs par les vôtres
 const TOKEN = "VOTRE_TOKEN_WHATSAPP_CLOUD_API";  // Token temporaire ou permanent
-const GROUP_ID = "VOTRE_GROUP_ID_WHATSAPP";      // ID du groupe "Nouvel an Color Party"
+const GROUP_ID = "1495025311793466";      // ID du groupe "Nouvel an Color Party"
 
 app.post("/", async (req, res) => {
     const { participant, color } = req.body;
