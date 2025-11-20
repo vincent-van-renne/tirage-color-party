@@ -5,8 +5,8 @@ const app = express();
 app.use(express.json());
 
 // ⚠️ Remplacez ces valeurs par les vôtres
-const TOKEN = "VOTRE_TOKEN_WHATSAPP_CLOUD_API";  // Token temporaire ou permanent
-const PHONE_NUMBER_ID ="+33 6 24 49 28 53";   // ID du numéro Whatsapp (Phone Number ID)
+const TOKEN = "EAAMmOl7KHqIBPZCwRarSzotIE3pZBMFHU7qh8vOUKPrmSsNyO0ZBd9mVZAPQXiWApvuQzb49VJZC2uRmqBM7FqDtoq1xVWSqmEopdWvungQjzYcC7bSOAwJSabP0HvGy73zlvZCfPxfPd7fIqGq1yJwomSJOQ5ioc28V2FJeBXWByrj31rfrG5POWjgphyb3gyA1YZAV4VUHJUB0AdL6WNrmK4Q7KoWbK8gc9NvU9KkBcBjzBCXPwYaoZBKqcKo4w5XoD4x8MOfCDMlR1iZAAlOfoMqcXJwoZD";  // Token temporaire ou permanent
+const PHONE_NUMBER_ID ="848218498378804";   // ID du numéro Whatsapp (Phone Number ID)
 const GROUP_ID = "1495025311793466";      // ID du groupe "Nouvel an Color Party"
 
 app.post("/", async (req, res) => {
